@@ -1,0 +1,40 @@
+{
+    "name": "oveleon/youtrack-api-php",
+    "description": "PHP Adapter for the YouTrack REST API",
+    "keywords": [
+        "symfony",
+        "youtrack",
+        "api"
+    ],
+    "license": "AGPL-3.0-or-later",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Daniele Sciannimanica",
+            "homepage": "https://github.com/doishub"
+        }
+    ],
+    "homepage": "https://www.oveleon.de",
+    "require": {
+        "php": ">=8.1",
+        "symfony/http-foundation": "^5.0|^6.0",
+        "symfony/http-client": "^5.0|^6.0"
+    },
+    "require-dev": {},
+    "conflict": {},
+    "autoload": {
+        "psr-4": {
+            "Oveleon\\YouTrack\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
+    }
+}
