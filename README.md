@@ -2,7 +2,9 @@
 This bundle is a PHP wrapper for the YouTrack REST API. It allows communication with your YouTrack instance.
 
 ## Installation
-`$ composer require oveleon/youtrack-api.php`
+```
+$ composer require oveleon/youtrack-api-php
+```
 
 ## Getting Started
 ```PHP
