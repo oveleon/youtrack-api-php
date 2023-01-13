@@ -2,17 +2,10 @@
 
 namespace Oveleon\YouTrack;
 
-use Oveleon\YouTrack\Api\AbstractApi;
 use Oveleon\YouTrack\Api\Issue;
 use Oveleon\YouTrack\Api\Project;
-use Oveleon\YouTrack\Exception\BadScopeCallException;
-use Oveleon\YouTrack\Exception\InvalidScopeException;
 use Oveleon\YouTrack\HttpClient\HttpClientInterface;
 
-/**
- * @method issues
- * @method projects
- */
 class Client
 {
     private HttpClientInterface $httpClient;
@@ -27,23 +20,19 @@ class Client
         return $this->httpClient;
     }
 
-    public function api(string $scope): AbstractApi
+    /**
+     * Entry point for issues
+     */
+    public function issues(): Issue
     {
-        return match ($scope) {
-            'projects'  => new Project($this),
-            'issues'    => new Issue($this),
-            default     => throw new InvalidScopeException(sprintf('Undefined api scope called: "%s"', $scope)),
-        };
+        return new Issue($this);
     }
 
-    public function __call(string $name, array $arguments)
+    /**
+     * Entry point for projects
+     */
+    public function projects(): Project
     {
-        try {
-            return $this->api($name);
-        }
-        catch (InvalidScopeException $e)
-        {
-            throw new BadScopeCallException(sprintf('Undefined method called: "%s"', $name));
-        }
+        return new Project($this);
     }
 }

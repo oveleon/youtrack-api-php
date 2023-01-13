@@ -2,8 +2,8 @@
 
 namespace Oveleon\YouTrack\HttpClient;
 
-use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpClient\HttpClient as SymfonyHttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
@@ -11,7 +11,7 @@ use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface as SymfonyHttpClientInterface;
 
-final class SymfonyHttpClient implements HttpClientInterface
+final class HttpClient implements HttpClientInterface
 {
     private SymfonyHttpClientInterface $client;
     private string $endpoint;
@@ -20,7 +20,7 @@ final class SymfonyHttpClient implements HttpClientInterface
 
     public function __construct(string $url, string $token)
     {
-        $this->client = HttpClient::create();
+        $this->client = SymfonyHttpClient::create();
         $this->endpoint = rtrim($url, '/');
         $this->token = $token;
         $this->prefix = '/api';
@@ -54,7 +54,7 @@ final class SymfonyHttpClient implements HttpClientInterface
     }
 
     /**
-     * Send a GET request
+     * Send a GET request.
      *
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
@@ -68,7 +68,7 @@ final class SymfonyHttpClient implements HttpClientInterface
     }
 
     /**
-     * Send a POST request
+     * Send a POST request.
      *
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
@@ -82,7 +82,7 @@ final class SymfonyHttpClient implements HttpClientInterface
     }
 
     /**
-     * Send a PUT request
+     * Send a PUT request.
      *
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
@@ -96,7 +96,7 @@ final class SymfonyHttpClient implements HttpClientInterface
     }
 
     /**
-     * Send a DELETE request
+     * Send a DELETE request.
      *
      * @throws ClientExceptionInterface
      * @throws DecodingExceptionInterface
@@ -112,7 +112,7 @@ final class SymfonyHttpClient implements HttpClientInterface
     /**
      * Generates the full route.
      */
-    public function generateRoute($uri): string
+    private function generateRoute($uri): string
     {
         return $this->endpoint . $this->prefix . '/' . $uri;
     }
