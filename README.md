@@ -9,7 +9,7 @@ $ composer require oveleon/youtrack-api-php
 ## Getting Started
 ```PHP
 use Oveleon\YouTrack\Client;
-use Oveleon\YouTrack\HttpClient\SymfonyHttpClient;
+use Oveleon\YouTrack\HttpClient\HttpClient;
 
 // Create http client to use.
 //  You can write your own adapter and use the HttpClientInterface to use e.g. the Guzzle HttpClient.
