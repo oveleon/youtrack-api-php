@@ -53,8 +53,8 @@ $projects = $api->projects()
 ```
 
 ## Documentation
-- Project
-- Issues
+- ~~Project~~
+- ~~Issues~~
 
 ## References
 - Use [Parsedown](https://github.com/erusev/parsedown) or other Markdown parsers to convert descriptions of issues and the like into HTML.
@@ -62,3 +62,4 @@ $projects = $api->projects()
 ## ToDo:
 - [ ] Test multiple queries
 - [ ] Allow nested field definitions for customFields
+- [ ] Create Documentation
