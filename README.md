@@ -58,6 +58,7 @@ $projects = $api->projects()
 
 ## References
 - Use [Parsedown](https://github.com/erusev/parsedown) or other Markdown parsers to convert descriptions of issues and the like into HTML.
+- A simple [ticket system](#) based on this API for the open source CMS Contao
 
 ## ToDo:
 - [ ] Test multiple queries
