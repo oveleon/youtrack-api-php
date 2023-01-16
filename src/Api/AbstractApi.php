@@ -15,14 +15,31 @@ abstract class AbstractApi
     /**
      * The fields to be retrieved.
      */
-    protected array $fieldCollection = [];
+    private array $fieldCollection = [];
 
     /**
-     * The queries to be used for the call.
+     * The filters to be used for the call.
      */
-    protected array $queryCollection = [];
+    private array $filterCollection = [];
 
+    /**
+     * The query parameter to be used for the route.
+     */
+    private array $queryCollection = [];
 
+    /**
+     * Pagination offset.
+     */
+    private ?int $offset = null;
+
+    /**
+     * Pagination limit.
+     */
+    private ?int $limit = null;
+
+    /**
+     * Abstract API.
+     */
     public function __construct(Client $client)
     {
         $this->client = $client;
@@ -39,11 +56,22 @@ abstract class AbstractApi
     }
 
     /**
-     * Defines a query that is used to send the request.
+     * Defines a filter that is used to send the request.
      */
-    public function query(string $query): self
+    public function filter(string $query): self
     {
-        $this->addQuery($query);
+        $this->addFilter($query);
+
+        return $this;
+    }
+
+    /**
+     * Paginate the result list.
+     */
+    public function paginate(int $offset, int $limit): self
+    {
+        $this->offset = $offset;
+        $this->limit = $limit;
 
         return $this;
     }
@@ -64,18 +92,26 @@ abstract class AbstractApi
      */
     protected function addFields(array $fields): void
     {
-        $this->fieldCollection = array_merge(
+        $this->fieldCollection = array_merge_recursive(
             $this->fieldCollection,
             $fields
         );
     }
 
     /**
-     * Adds query to be used.
+     * Adds filter to be used for the call.
      */
-    protected function addQuery(string $query): void
+    protected function addFilter(string $query): void
     {
-        $this->queryCollection[] = $query;
+        $this->filterCollection[] = $query;
+    }
+
+    /**
+     * Adds query to be used for the route.
+     */
+    protected function addQuery(string $name, string $value): void
+    {
+        $this->queryCollection[$name] = $value;
     }
 
     /**
@@ -119,7 +155,7 @@ abstract class AbstractApi
     }
 
     /**
-     * Generates a route with fields and the query
+     * Generates a route with fields and the query.
      */
     protected function generateUri($uri): string
     {
@@ -131,10 +167,20 @@ abstract class AbstractApi
 
         $query = http_build_query([
             ...QueryUtil::queryList('fields', $this->fieldCollection),
-            ...QueryUtil::queryList('query', $this->queryCollection)
+            ...QueryUtil::queryList('query', $this->filterCollection, ' '),
+            ...$this->queryCollection
         ]);
 
-        // ToDo: Reset query and fields
+        if(null !== $this->offset && null !== $this->limit)
+        {
+            $query .= sprintf('&$skip=%s&$top=%s', $this->offset, $this->limit);
+        }
+
+        $this->offset = null;
+        $this->limit = null;
+
+        $this->filterCollection = [];
+        $this->fieldCollection = [];
 
         return $uri . '?' . $query;
     }

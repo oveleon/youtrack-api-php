@@ -37,20 +37,29 @@ final class HttpClient implements HttpClientInterface
      */
     public function request(string $method, string $uri, array $body = []): array
     {
+        $parameters = [
+            'headers' => [
+                'Content-Type'  => 'application/json',
+                'Authorization' => "Bearer $this->token",
+                'Cache-Control' => 'no-cache'
+            ]
+        ];
+
+        switch ($method)
+        {
+            case Request::METHOD_POST:
+                $parameters['query'] = $body;
+                break;
+            default:
+                $parameters['json'] = $body;
+        }
+
         $response = $this->client->request(
             $method,
             $this->generateRoute($uri),
-            [
-                'headers' => [
-                    'Content-Type'  => 'application/json',
-                    'Authorization' => "Bearer $this->token",
-                    'Cache-Control' => 'no-cache'
-                ],
-                'json'   => $body
-            ]
+            $parameters
         );
 
-        // Fixme: Here it is better to return the response object as such to be able to continue working with it and to use the full power of Symfony Response.
         return $response->toArray();
     }
 

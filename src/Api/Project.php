@@ -21,7 +21,7 @@ class Project extends AbstractApi
     /**
      * Find all projects.
      */
-    public function findAll(): array
+    public function all(): array
     {
         return $this->get("projects");
     }
@@ -29,9 +29,9 @@ class Project extends AbstractApi
     /**
      * Find one project.
      */
-    public function findOne($projectId): array
+    public function one($projectId): array
     {
-        $this->addQuery("$projectId");
+        $this->addFilter("$projectId");
 
         return $this->get("projects");
     }
