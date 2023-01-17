@@ -59,7 +59,7 @@ $projects = $api->projects()
 ```
 
 ## Documentation
-[Documentation](https://oveleon.github.io/youtrack-api-php/)
+Read the full <a href="https://oveleon.github.io/youtrack-api-php/" target="_blank">Documentation</a>.
 
 ## References
 - YouTrack REST API [Documentation](https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html)
