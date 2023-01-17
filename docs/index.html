@@ -7,7 +7,11 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">-->
+  <style>
+    .markdown-section a code{
+      color: #FF318C;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
@@ -15,6 +19,7 @@
   <script>
     window.$docsify = {
       name: 'YouTrack API for PHP',
+      logo: 'logo.svg',
       themeColor: '#FF318C',
       loadSidebar: true,
       plugins: [
@@ -24,6 +29,8 @@
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- Plugins -->
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>

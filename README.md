@@ -51,7 +51,7 @@ $issues = $api->issues()
               ->paginate(0, 10)
               ->all();
 
-// And now we use another entry point
+// And now we use another endpoint
 $projects = $api->projects()
                 ->all();
 
@@ -67,7 +67,9 @@ Read the full <a href="https://oveleon.github.io/youtrack-api-php/" target="_bla
 - A simple [ticket system](#) based on this API for the open source CMS Contao
 
 ## Contributing
-The API currently supports only a subset of the available options. The basic structure has been prepared so that contributing and adding new entry points is easy. The structure should be self-explanatory, but feel free to [open an issue](https://github.com/oveleon/youtrack-api-php/issues/new) if you have any questions or comments. Supplementary queries or new entry points must be provided as [pull requests](https://github.com/oveleon/youtrack-api-php/pulls).
+The API currently supports only a subset of the available options. The basic structure has been prepared so that contributing and adding new endpoints is easy. The structure should be self-explanatory, but feel free to [open an issue](https://github.com/oveleon/youtrack-api-php/issues/new) if you have any questions or comments. Supplementary queries or new entry points must be provided as [pull requests](https://github.com/oveleon/youtrack-api-php/pulls).
 
 ## ToDo:
-- [ ] Create Documentation
+- [ ] Provide more endpoints
+- [ ] Extend existing endpoints (e.g. create Issue)
+- [ ] Documentation

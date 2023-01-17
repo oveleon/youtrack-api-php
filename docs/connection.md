@@ -13,7 +13,7 @@ $httpClient = new HttpClient('https://example.myjetbrains.com', 'perm:your-token
 ?> To use a custom HTTP client, the `HttpClientInterface` can be used. The methods listed here must be provided for the API client.
 
 ## API Client
-The API Client provides several entry points to simplify working with the YouTrack API. It is initialized with the previously created HTTP client.
+The API Client provides several endpoints to simplify working with the YouTrack API. It is initialized with the previously created HTTP client.
 
 ```php
 use Oveleon\YouTrack\Client;
