@@ -59,10 +59,7 @@ $projects = $api->projects()
 ```
 
 ## Documentation
-- ~~Project~~
-- ~~Issues~~
-  - ~~Comments~~
-  - ~~Tags~~
+[Documentation](https://oveleon.github.io/youtrack-api-php/)
 
 ## References
 - YouTrack REST API [Documentation](https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html)
