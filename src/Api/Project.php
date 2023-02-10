@@ -23,7 +23,7 @@ class Project extends AbstractApi
      */
     public function all(): array
     {
-        return $this->get("projects");
+        return $this->get("admin/projects");
     }
 
     /**
@@ -33,6 +33,6 @@ class Project extends AbstractApi
     {
         $this->addFilter("$projectId");
 
-        return $this->get("projects");
+        return $this->get("admin/projects");
     }
 }
