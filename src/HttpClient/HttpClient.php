@@ -47,9 +47,6 @@ final class HttpClient implements HttpClientInterface
 
         switch ($method)
         {
-            case Request::METHOD_POST:
-                $parameters['query'] = $body;
-                break;
             default:
                 $parameters['json'] = $body;
         }

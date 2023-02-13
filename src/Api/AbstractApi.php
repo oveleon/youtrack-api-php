@@ -157,7 +157,7 @@ abstract class AbstractApi
     /**
      * Generates a route with fields and the query.
      */
-    protected function generateUri($uri): string
+    protected function generateUri(string $uri): string
     {
         // Use default fields when no fields are set
         if(empty($this->fieldCollection))
@@ -182,6 +182,6 @@ abstract class AbstractApi
         $this->filterCollection = [];
         $this->fieldCollection = [];
 
-        return $uri . '?' . $query;
+        return $uri . ($query ? '?' . $query : '');
     }
 }
