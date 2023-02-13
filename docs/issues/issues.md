@@ -13,6 +13,19 @@ Returns a specific issue based on the issue ID.
 ##### `project($projectId)`
 Returns all issues based on the project ID.
 
+##### `create($parameter)`
+Creates a new issue using the following scheme:
+```php
+$issue = $youtrack
+            ->issues()
+            ->create([
+                'project' => ['id' => '0-11'],
+                'summary' => 'New issue title',
+                'description' => 'My Description is optional.'
+            ]);
+```
+Returns the data of the newly created issue. The return fields can also be defined here via `->fields()`.
+
 ##### `customFields($issueId)`
 Returns all custom fields based on the issue ID.
 
