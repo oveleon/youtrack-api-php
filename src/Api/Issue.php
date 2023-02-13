@@ -117,9 +117,9 @@ class Issue extends AbstractApi
     /**
      * Creates a new issue.
      */
-    public function create(): array
+    public function create(array $parameter): array
     {
-        // ToDo: https://www.jetbrains.com/help/youtrack/devportal/api-howto-create-issue.html#step-by-step
+        return $this->post("issues", $parameter);
     }
 
     /**
