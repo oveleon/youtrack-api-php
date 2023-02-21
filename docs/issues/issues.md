@@ -26,6 +26,9 @@ $issue = $youtrack
 ```
 Returns the data of the newly created issue. The return fields can also be defined here via `->fields()`.
 
+##### `update($issueId, $parameter)`
+Updates an issue base on the Issue id.
+
 ##### `customFields($issueId)`
 Returns all custom fields based on the issue ID.
 

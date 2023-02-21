@@ -125,9 +125,9 @@ class Issue extends AbstractApi
     /**
      * Update an existing issue.
      */
-    public function update(): array
+    public function update(string $issueId, array $parameter): array
     {
-        // ToDo: https://www.jetbrains.com/help/youtrack/devportal/api-usecase-update-text-field-value.html
+        return $this->post("issues/$issueId", $parameter);
     }
 
     /**
