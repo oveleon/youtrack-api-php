@@ -4,7 +4,7 @@ $youtrack->issues()
          ->comments()
 ```
 
-##### `all()`
+##### `all($issueId)`
 Returns all issue comments.
 
 ##### `one($issueId, $commentId)`
@@ -18,8 +18,12 @@ Returns a specific issue based on the issue and comment ID.
     'textPreview',
     'created',
     'updated',
-    'author',
-    'issue',
+    'author' => [
+        'name'
+    ],
+    'issue' => [
+        'idReadable'
+    ],
     'attachments',
     'visibility',
     'deleted'

@@ -17,8 +17,12 @@ class Comment extends AbstractApi
             'textPreview',
             'created',
             'updated',
-            'author',
-            'issue',
+            'author' => [
+                'name'
+            ],
+            'issue' => [
+                'idReadable'
+            ],
             'attachments',
             'visibility',
             'deleted'
@@ -41,5 +45,13 @@ class Comment extends AbstractApi
     public function one(string $issueId, string $commentId): array
     {
         return $this->get("issues/$issueId/comments/$commentId");
+    }
+
+    /**
+     * Create issue comment.
+     */
+    public function create(string $issueId, array $parameter): array
+    {
+        return $this->post("issues/$issueId/comments", $parameter);
     }
 }
