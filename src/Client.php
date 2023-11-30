@@ -23,16 +23,13 @@ class Client
     }
 
     /**
-     * Entry point for issues
+     * Entry points.
      */
     public function issues(): Issue
     {
         return new Issue($this);
     }
 
-    /**
-     * Entry point for projects
-     */
     public function projects(): Project
     {
         return new Project($this);

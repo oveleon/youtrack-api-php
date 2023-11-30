@@ -2,21 +2,17 @@
 
 namespace Oveleon\YouTrack\Api;
 
-use Oveleon\YouTrack\Api\Issue\Comment;
-use Oveleon\YouTrack\Api\Issue\Tag;
-use Oveleon\YouTrack\Api\Issue\TimeTracking;
-
 class WorkItem extends AbstractApi
 {
     /**
-     * Overwrites the default fields for issues.
+     * Overwrites the default fields for work items.
      */
     protected function defaultFields(): self
     {
         $this->addFields([
             'id',
             'author' => [
-              'id'
+                'id'
             ],
             'becomesRemoved',
             'created',
@@ -24,21 +20,21 @@ class WorkItem extends AbstractApi
             'date',
             'description',
             'duration' => [
-              'presentation',
-              'minutes'
+                'presentation',
+                'minutes'
             ],
             'isNew',
             'type',
             'updated',
             'issue' =>[
-              'id',
-              'customFields' => [
-                'name',
-                '$type',
-                'value' => [
-                  'name'
+                'id',
+                'customFields' => [
+                    'name',
+                    '$type',
+                    'value' => [
+                        'name'
+                    ],
                 ],
-              ],
             ]
         ]);
 
@@ -46,7 +42,7 @@ class WorkItem extends AbstractApi
     }
 
     /**
-     * Returns all issues.
+     * Returns all work items.
      */
     public function all(): array
     {
@@ -54,17 +50,18 @@ class WorkItem extends AbstractApi
     }
 
     /**
-     * Returns one issue by id.
+     * Returns one work item by id.
      */
     public function one(string $workItemId): array
     {
         return $this->get("workItems/$workItemId");
     }
 
-  public function query(string $name, string $value): self
-  {
-    $this->addQuery($name, $value);
 
-    return $this;
-  }
+    public function query(string $name, string $value): self
+    {
+      $this->addQuery($name, $value);
+
+      return $this;
+    }
 }
