@@ -17,8 +17,8 @@
     "homepage": "https://www.oveleon.de",
     "require": {
         "php": ">=8.1",
-        "symfony/http-foundation": "^5.0|^6.0",
-        "symfony/http-client": "^5.0|^6.0"
+        "symfony/http-foundation": "^5.0|^6.0|^7.0",
+        "symfony/http-client": "^5.0|^6.0|^7.0"
     },
     "require-dev": {},
     "conflict": {},
